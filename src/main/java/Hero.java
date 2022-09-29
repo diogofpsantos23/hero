@@ -21,9 +21,10 @@ public class Hero {
         if (position__.get_x() < 0) {return new Position(position__.get_x() + 1, position__.get_y());}
         if (position__.get_x() >= 0) {return new Position(position__.get_x() - 1, position__.get_y());}
         return null;}
+
     public Position moveRight() {
-        if (position__.get_y() < 40) {return new Position(position__.get_x() + 1, position__.get_y());}
-        if (position__.get_y() >= 40) {return new Position(position__.get_x() - 1, position__.get_y());}
+        if (position__.get_x() < 80) {return new Position(position__.get_x() + 1, position__.get_y());}
+        if (position__.get_x() >= 80) {return new Position(position__.get_x() - 1, position__.get_y());}
         return null;
     }
 
