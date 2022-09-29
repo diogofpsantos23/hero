@@ -16,5 +16,4 @@ public class Position {
     public static void drawHero(Screen screen) {
         screen.setCharacter(x_, y_, TextCharacter.fromCharacter('X')[0]);
     }
-
 }

@@ -8,8 +8,6 @@ public class Hero {
         this.position_ = new Position(position.get_x(), position.get_y());
     }
 
-    public static void main(String[] args) {}
-
     public int get_x() {return this.position_.get_x();}
     public int get_y() {return this.position_.get_y();}
 
