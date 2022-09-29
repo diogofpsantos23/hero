@@ -10,7 +10,8 @@ import java.io.IOException;
 
 public class Game {
     private Screen screen_;
-    public Hero hero = new Hero(39, 19);
+    private Position position = new Position(39, 19);
+    private Hero hero = new Hero(position);
 
     public Game() {
         try {
@@ -33,8 +34,12 @@ public class Game {
 
     private void draw() throws IOException {
         this.screen_.clear();
-        hero.drawHero(screen_);
+        Position.drawHero(screen_);
         this.screen_.refresh();
+    }
+
+    private void moveHero(Position position) {
+        hero.setPosition(position);
     }
 
     public void run() throws IOException {
@@ -44,14 +49,14 @@ public class Game {
             processKey(key);
 
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {this.screen_.close();}
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a') {hero.moveLeft();}
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'w') {hero.moveUp();}
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 's') {hero.moveDown();}
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd') {hero.moveRight();}
-            if (key.getKeyType() == KeyType.ArrowUp) {hero.moveUp();}
-            if (key.getKeyType() == KeyType.ArrowDown) {hero.moveDown();}
-            if (key.getKeyType() == KeyType.ArrowLeft) {hero.moveLeft();}
-            if (key.getKeyType() == KeyType.ArrowRight) {hero.moveRight();}
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a') {moveHero(hero.moveLeft());}
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'w') {moveHero(hero.moveUp());}
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 's') {moveHero(hero.moveDown());}
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd') {moveHero(hero.moveRight());}
+            if (key.getKeyType() == KeyType.ArrowUp) {moveHero(hero.moveUp());}
+            if (key.getKeyType() == KeyType.ArrowDown) {moveHero(hero.moveDown());}
+            if (key.getKeyType() == KeyType.ArrowLeft) {moveHero(hero.moveLeft());}
+            if (key.getKeyType() == KeyType.ArrowRight) {moveHero(hero.moveRight());}
             if (key.getKeyType() == KeyType.EOF) {break;}
 
             draw();
@@ -61,7 +66,4 @@ public class Game {
     private void processKey(KeyStroke key) {
         System.out.println(key);
     }
-
-    private int x__ = hero.get_x();
-    private int y__ = hero.get_y();
 }
