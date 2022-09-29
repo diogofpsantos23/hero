@@ -1,19 +1,12 @@
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.screen.Screen;
-
 public class Position {
-    private static int x_;
-    private static int y_;
+    private static int x__;
+    private static int y__;
 
     public Position(int x, int y) {
-        this.x_ = x;
-        this.y_ = y;
+        x__ = x;
+        y__ = y;
     }
 
-    public  int get_x() {return this.x_;}
-    public int get_y() {return this.y_;}
-
-    public static void drawHero(Screen screen) {
-        screen.setCharacter(x_, y_, TextCharacter.fromCharacter('X')[0]);
-    }
+    public int get_x() {return x__;}
+    public int get_y() {return y__;}
 }
